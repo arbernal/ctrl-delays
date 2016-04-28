@@ -1,0 +1,4 @@
+services:
+#    teknei_ctrl.example:
+#        class: Teknei\CtrlBundle\Example
+#        arguments: ["@service_id", "plain_value", %parameter%]
