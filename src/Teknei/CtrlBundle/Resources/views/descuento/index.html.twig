@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Descuento list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Iddescuento</th>
+                <th>Tipo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for descuento in descuentos %}
+            <tr>
+                <td><a href="{{ path('descuento_show', { 'id': descuento.iddescuento }) }}">{{ descuento.iddescuento }}</a></td>
+                <td>{{ descuento.tipo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('descuento_show', { 'id': descuento.iddescuento }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('descuento_edit', { 'id': descuento.iddescuento }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('descuento_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
