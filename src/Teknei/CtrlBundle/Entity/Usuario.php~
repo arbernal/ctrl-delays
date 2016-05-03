@@ -31,9 +31,9 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="contrase√±a", type="string", length=10, nullable=true)
+     * @ORM\Column(name="contrasena", type="string", length=10, nullable=true)
      */
-    private $contrase„±a;
+    private $contrasena;
 
     /**
      * @var integer

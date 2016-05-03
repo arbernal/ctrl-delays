@@ -31,9 +31,9 @@ class Usuario
     /**
      * @var string
      *
-     * @ORM\Column(name="contraseÃ±a", type="string", length=10, nullable=true)
+     * @ORM\Column(name="contrasena", type="string", length=10, nullable=true)
      */
-    private $contraseã±a;
+    private $contrasena;
 
     /**
      * @var integer
@@ -79,27 +79,27 @@ class Usuario
     }
 
     /**
-     * Set contraseã±a
+     * Set contrasena
      *
-     * @param string $contraseã±a
+     * @param string $contrasena
      *
      * @return Usuario
      */
-    public function setContraseã±a($contraseã±a)
+    public function setContrasena($contrasena)
     {
-        $this->contraseã±a = $contraseã±a;
+        $this->contrasena = $contrasena;
 
         return $this;
     }
 
     /**
-     * Get contraseã±a
+     * Get contrasena
      *
      * @return string
      */
-    public function getContraseã±a()
+    public function getContrasena()
     {
-        return $this->contraseã±a;
+        return $this->contrasena;
     }
 
     /**
