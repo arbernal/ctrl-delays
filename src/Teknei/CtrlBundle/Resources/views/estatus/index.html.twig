@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Estatus list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idestatus</th>
+                <th>Tipo</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for estatus in estatuses %}
+            <tr>
+                <td><a href="{{ path('estatus_show', { 'id': estatus.idestatus }) }}">{{ estatus.idestatus }}</a></td>
+                <td>{{ estatus.tipo }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('estatus_show', { 'id': estatus.idestatus }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('estatus_edit', { 'id': estatus.idestatus }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('estatus_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
