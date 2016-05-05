@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cata list</h1>
+    <h1>Lista de Catalogos</h1>
 
     <table>
         <thead>
@@ -23,10 +23,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('cata_show', { 'id': catum.idcata }) }}">show</a>
+                            <a href="{{ path('cata_show', { 'id': catum.idcata }) }}">Mostrar</a>
                         </li>
                         <li>
-                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">edit</a>
+                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">editar</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +37,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('cata_new') }}">Create a new entry</a>
+            <a href="{{ path('cata_new') }}">Aceptar</a>
         </li>
     </ul>
 {% endblock %}
