@@ -1,15 +1,14 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Roles list</h1>
+    <h1>Roles</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Idroles</th>
                 <th>Nombre</th>
-                <th>Idesta</th>
-                <th>Actions</th>
+                <th>Estatus</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +20,12 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('roles_show', { 'id': role.idroles }) }}">show</a>
+                            <a href="{{ path('roles_show', { 'id': role.idroles }) }}">
+                             <input type="submit" value="Mostrar"></a>
                         </li>
                         <li>
-                            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">edit</a>
+                            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">
+                             <input type="submit" value="Editar"></a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +36,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('roles_new') }}">Create a new entry</a>
+            <a href="{{ path('roles_new') }}">
+             <input type="submit" value="Agregar"></a>
         </li>
     </ul>
 {% endblock %}

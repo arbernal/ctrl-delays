@@ -1,15 +1,15 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Descuento list</h1>
+    <h1>Lista de Descuentos</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Iddescuento</th>
-                <th>Tipo</th>
-                <th>Idesta</th>
-                <th>Actions</th>
+            
+                <th>Tipo de Descuento</th>
+                <th>Estatus</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +21,12 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('descuento_show', { 'id': descuento.iddescuento }) }}">show</a>
+                            <a href="{{ path('descuento_show', { 'id': descuento.iddescuento }) }}">
+                             <input type="submit" value="Mostrar"></a>
                         </li>
                         <li>
-                            <a href="{{ path('descuento_edit', { 'id': descuento.iddescuento }) }}">edit</a>
+                            <a href="{{ path('descuento_edit', { 'id': descuento.iddescuento }) }}">
+                             <input type="submit" value="Editar"></a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +37,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('descuento_new') }}">Create a new entry</a>
+            <a href="{{ path('descuento_new') }}">
+             <input type="submit" value="Agregar"></a>
         </li>
     </ul>
 {% endblock %}

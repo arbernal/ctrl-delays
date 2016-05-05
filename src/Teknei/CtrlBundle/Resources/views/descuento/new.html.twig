@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Descuento creation</h1>
+    <h1>Nuevo Descuento</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Agregar" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('descuento_index') }}">Back to the list</a>
+            <a href="{{ path('descuento_index') }}">
+             <input type="submit" value="Regresar"></a>
         </li>
     </ul>
 {% endblock %}

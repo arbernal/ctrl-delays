@@ -111,8 +111,10 @@ class Cata
      */
     public function setIdesta($idesta)
     {
-        $this->idesta = $idesta;
-
+       
+    	$this->idesta = $idesta;
+    	
+    	
         return $this;
     }
 

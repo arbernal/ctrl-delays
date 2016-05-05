@@ -10,11 +10,11 @@
                 <td>{{ descuento.iddescuento }}</td>
             </tr>
             <tr>
-                <th>Tipo</th>
+                <th>Tipo de Descuento</th>
                 <td>{{ descuento.tipo }}</td>
             </tr>
             <tr>
-                <th>Idesta</th>
+                <th>Estatus</th>
                 <td>{{ descuento.idesta }}</td>
             </tr>
         </tbody>
@@ -22,14 +22,16 @@
 
     <ul>
         <li>
-            <a href="{{ path('descuento_index') }}">Back to the list</a>
+            <a href="{{ path('descuento_index') }}">
+             <input type="submit" value="Regresar"></a>
         </li>
         <li>
-            <a href="{{ path('descuento_edit', { 'id': descuento.iddescuento }) }}">Edit</a>
+            <a href="{{ path('descuento_edit', { 'id': descuento.iddescuento }) }}">
+             <input type="submit" value="Editar"></a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

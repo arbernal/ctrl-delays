@@ -6,10 +6,9 @@
     <table>
         <thead>
             <tr>
-                <th>Idconfiguracion</th>
-                <th>Tarifa</th>
-                <th>Idesta</th>
-                <th>Actions</th>
+                <th>Tarifa Base</th>
+                <th>Estatus</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -21,10 +20,12 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('configuracion_show', { 'id': configuracion.idconfiguracion }) }}">show</a>
+                            <a href="{{ path('configuracion_show', { 'id': configuracion.idconfiguracion }) }}">
+                             <input type="submit" value="Mostrar"></a>
                         </li>
                         <li>
-                            <a href="{{ path('configuracion_edit', { 'id': configuracion.idconfiguracion }) }}">edit</a>
+                            <a href="{{ path('configuracion_edit', { 'id': configuracion.idconfiguracion }) }}">
+                             <input type="submit" value="Editarr"></a>
                         </li>
                     </ul>
                 </td>
@@ -35,7 +36,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('configuracion_new') }}">Create a new entry</a>
+            <a href="{{ path('configuracion_new') }}">
+             <input type="submit" value="Agregar"></a>
         </li>
     </ul>
 {% endblock %}

@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Roles creation</h1>
+    <h1>Nuevo Rol</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Agregar" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('roles_index') }}">Back to the list</a>
+            <a href="{{ path('roles_index') }}">
+             <input type="submit" value="Regresar"></a>
         </li>
     </ul>
 {% endblock %}

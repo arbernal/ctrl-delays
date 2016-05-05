@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cata</h1>
+    <h1>Catalogos</h1>
 
     <table>
         <tbody>
@@ -10,15 +10,15 @@
                 <td>{{ catum.idcata }}</td>
             </tr>
             <tr>
-                <th>Desccort</th>
+                <th>Descripcion corta</th>
                 <td>{{ catum.descCort }}</td>
             </tr>
             <tr>
-                <th>Descomp</th>
+                <th>Descripcion completa</th>
                 <td>{{ catum.desComp }}</td>
             </tr>
             <tr>
-                <th>Idesta</th>
+                <th>Estatus</th>
                 <td>{{ catum.idesta }}</td>
             </tr>
         </tbody>
@@ -26,14 +26,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('cata_index') }}">Back to the list</a>
+            <a href="{{ path('cata_index') }}">Regresar</a>
         </li>
         <li>
-            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">Edit</a>
+            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

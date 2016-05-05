@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Roles</h1>
+    <h1>Lista de Roles</h1>
 
     <table>
         <tbody>
@@ -14,7 +14,7 @@
                 <td>{{ role.nombre }}</td>
             </tr>
             <tr>
-                <th>Idesta</th>
+                <th>Estatus</th>
                 <td>{{ role.idesta }}</td>
             </tr>
         </tbody>
@@ -22,14 +22,16 @@
 
     <ul>
         <li>
-            <a href="{{ path('roles_index') }}">Back to the list</a>
+            <a href="{{ path('roles_index') }}">
+            <input type="submit" value="Regresar"></a>
         </li>
         <li>
-            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">Edit</a>
+            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">
+            <input type="submit" value="Editar"></a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Eliminar">
             {{ form_end(delete_form) }}
         </li>
     </ul>
