@@ -2,8 +2,14 @@
 
 {% block body %}
     <h1>Roles</h1>
+    <ul class="nav nav-pills">
+  <li class="active"> <a href="{{ path('roles_new') }}" href="#">Agregar</a></li>
+  <li><a href="#">Ver</a></li>
+  <li><a href="#">Editar</a></li>
+  <li><a href="#">Eliminar</a></li>
+</ul>
 
-    <table>
+    <table class = "table">
         <thead>
             <tr>
                 <th>Nombre</th>
@@ -21,11 +27,14 @@
                     <ul>
                         <li>
                             <a href="{{ path('roles_show', { 'id': role.idroles }) }}">
-                             <input type="submit" value="Mostrar"></a>
+                             <input type="submit" value="Ver"></a>
                         </li>
                         <li>
                             <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">
                              <input type="submit" value="Editar"></a>
+                        </li>
+                        <li>
+                         <input type="submit" value="Eliminar"></a>
                         </li>
                     </ul>
                 </td>
@@ -33,11 +42,5 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('roles_new') }}">
-             <input type="submit" value="Agregar"></a>
-        </li>
-    </ul>
+    
 {% endblock %}
