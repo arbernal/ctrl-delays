@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Cata
  *
  * @ORM\Table(name="cata")
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Teknei\CtrlBundle\Entity\Repository\CataRepository")
  */
 class Cata
 {
