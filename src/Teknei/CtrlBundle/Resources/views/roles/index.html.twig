@@ -23,17 +23,17 @@
                 <td>{{ role.idesta }}</td>
                 <td>
                     <ul>                        
-                       <ul class="nav nav-pills">
-                       <label>  <button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
+                                          
+                      <label class="checkbox-inline">
+                      <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">
+                      <label><button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
+                      
+                      <label class="checkbox-inline">
+                      <a href="{{ path('roles_show', { 'id': role.idroles }) }}">
+                      <label></label> <button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
                        
-                       <ul class="nav nav-pills">
-                            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">
-                             <label><button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
-                        
-                        <ul class="nav nav-pills">
-                            <a href="{{ path('roles_show', { 'id': role.idroles }) }}">
-                              <label></label> <button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
-                       
+                      <label class="checkbox-inline">
+                      <button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
                     </ul>
                 </td>
             </tr>
