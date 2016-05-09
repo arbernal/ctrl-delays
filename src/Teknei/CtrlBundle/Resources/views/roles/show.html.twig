@@ -3,7 +3,7 @@
 {% block body %}
     <h1>Lista de Roles</h1>
 
-    <table>
+    <table class = "table">
         <tbody>
             <tr>
                 <th>&nbsp;Idroles</th>
@@ -20,19 +20,9 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
+    <ul class= "nav nav-pills">
+       
             <a href="{{ path('roles_index') }}">
-            <input type="submit" value="Regresar"></a>
-        </li>
-        <li>
-            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">
-            <input type="submit" value="Editar"></a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Eliminar">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+           <label> <input type="submit" class="btn btn-primary btn-xs" value="Regresar"></a> </label>
+</ul>
 {% endblock %}
