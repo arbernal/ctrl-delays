@@ -8,7 +8,7 @@ security:
                 check_path:  /login_check
 
     access_control:
-        - { path: ^/estatus, roles: ROLE_ADMIN }
+        - { path: ^/roles, roles: ROLE_ADMIN }
 
     providers:
         in_memory:
