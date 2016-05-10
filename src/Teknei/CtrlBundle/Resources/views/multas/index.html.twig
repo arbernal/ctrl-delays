@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Multas list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idmultas</th>
+                <th>Tiemtran</th>
+                <th>Subtotal</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for multa in multas %}
+            <tr>
+                <td><a href="{{ path('multas_show', { 'id': multa.idmultas }) }}">{{ multa.idmultas }}</a></td>
+                <td>{% if multa.tiemTran %}{{ multa.tiemTran|date('H:i:s') }}{% endif %}</td>
+                <td>{{ multa.subtotal }}</td>
+                <td>{{ multa.total }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('multas_show', { 'id': multa.idmultas }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('multas_edit', { 'id': multa.idmultas }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('multas_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}

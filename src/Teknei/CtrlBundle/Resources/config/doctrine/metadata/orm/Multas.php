@@ -1,0 +1,77 @@
+<?php
+
+
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Multas
+ *
+ * @ORM\Table(name="multas", indexes={@ORM\Index(name="fk_multas_descuento1_idx", columns={"idReca_desc"}), @ORM\Index(name="fk_multas_Cata1_idx", columns={"idEsta"}), @ORM\Index(name="fk_multas_Cata2_idx", columns={"idEstaPago"})})
+ * @ORM\Entity
+ */
+class Multas
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="idMultas", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idmultas;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="tiem_tran", type="time", nullable=true)
+     */
+    private $tiemTran;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="subtotal", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $subtotal;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="total", type="float", precision=10, scale=0, nullable=true)
+     */
+    private $total;
+
+    /**
+     * @var \Cata
+     *
+     * @ORM\ManyToOne(targetEntity="Cata")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idEsta", referencedColumnName="idCata")
+     * })
+     */
+    private $idesta;
+
+    /**
+     * @var \RecaDesc
+     *
+     * @ORM\ManyToOne(targetEntity="RecaDesc")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idReca_desc", referencedColumnName="idReca_desc")
+     * })
+     */
+    private $idrecaDesc;
+
+    /**
+     * @var \Cata
+     *
+     * @ORM\ManyToOne(targetEntity="Cata")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idEstaPago", referencedColumnName="idCata")
+     * })
+     */
+    private $idestapago;
+
+
+}
+

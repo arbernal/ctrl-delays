@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Multas</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idmultas</th>
+                <td>{{ multa.idmultas }}</td>
+            </tr>
+            <tr>
+                <th>Tiemtran</th>
+                <td>{% if multa.tiemTran %}{{ multa.tiemTran|date('H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Subtotal</th>
+                <td>{{ multa.subtotal }}</td>
+            </tr>
+            <tr>
+                <th>Total</th>
+                <td>{{ multa.total }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('multas_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('multas_edit', { 'id': multa.idmultas }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

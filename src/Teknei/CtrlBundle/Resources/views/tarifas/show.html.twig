@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Tarifas</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Idtari</th>
+                <td>{{ tarifa.idtari }}</td>
+            </tr>
+            <tr>
+                <th>Tarifa</th>
+                <td>{{ tarifa.tarifa }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('tarifas_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('tarifas_edit', { 'id': tarifa.idtari }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

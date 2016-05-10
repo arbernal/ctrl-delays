@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>RecaDesc list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Idrecadesc</th>
+                <th>Porce</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recaDesc in recaDescs %}
+            <tr>
+                <td><a href="{{ path('recadesc_show', { 'id': recaDesc.idrecaDesc }) }}">{{ recaDesc.idrecaDesc }}</a></td>
+                <td>{{ recaDesc.porce }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('recadesc_show', { 'id': recaDesc.idrecaDesc }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('recadesc_edit', { 'id': recaDesc.idrecaDesc }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('recadesc_new') }}">Create a new entry</a>
+        </li>
+    </ul>
+{% endblock %}
