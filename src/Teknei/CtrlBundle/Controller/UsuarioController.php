@@ -28,7 +28,7 @@ class UsuarioController extends Controller
 
         $usuarios = $em->getRepository('TekneiCtrlBundle:Usuario')->findAll();
 
-        return $this->render('usuario/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:usuario:index.html.twig', array(
             'usuarios' => $usuarios,
         ));
     }
@@ -50,10 +50,10 @@ class UsuarioController extends Controller
             $em->persist($usuario);
             $em->flush();
 
-            return $this->redirectToRoute('usuario_show', array('id' => $usuario->getId()));
+            return $this->redirectToRoute('usuario_show', array('id' => $usuario->getIdusuario()));
         }
 
-        return $this->render('usuario/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:usuario:new.html.twig', array(
             'usuario' => $usuario,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class UsuarioController extends Controller
     {
         $deleteForm = $this->createDeleteForm($usuario);
 
-        return $this->render('usuario/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:usuario:show.html.twig', array(
             'usuario' => $usuario,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class UsuarioController extends Controller
             $em->persist($usuario);
             $em->flush();
 
-            return $this->redirectToRoute('usuario_edit', array('id' => $usuario->getId()));
+            return $this->redirectToRoute('usuario_edit', array('id' => $usuario->getIdusuario()));
         }
 
-        return $this->render('usuario/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:usuario:edit.html.twig', array(
             'usuario' => $usuario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class UsuarioController extends Controller
     private function createDeleteForm(Usuario $usuario)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getId())))
+            ->setAction($this->generateUrl('usuario_delete', array('id' => $usuario->getIdusuario())))
             ->setMethod('DELETE')
             ->getForm()
         ;

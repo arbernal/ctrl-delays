@@ -28,7 +28,7 @@ class CataController extends Controller
 
         $catas = $em->getRepository('TekneiCtrlBundle:Cata')->findAll();
 
-        return $this->render('cata/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:cata:index.html.twig', array(
             'catas' => $catas,
         ));
     }
@@ -50,10 +50,10 @@ class CataController extends Controller
             $em->persist($catum);
             $em->flush();
 
-            return $this->redirectToRoute('cata_show', array('id' => $catum->getId()));
+            return $this->redirectToRoute('cata_show', array('id' => $catum->getIdcata()));
         }
 
-        return $this->render('cata/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:cata:new.html.twig', array(
             'catum' => $catum,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class CataController extends Controller
     {
         $deleteForm = $this->createDeleteForm($catum);
 
-        return $this->render('cata/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:cata:show.html.twig', array(
             'catum' => $catum,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class CataController extends Controller
             $em->persist($catum);
             $em->flush();
 
-            return $this->redirectToRoute('cata_edit', array('id' => $catum->getId()));
+            return $this->redirectToRoute('cata_edit', array('id' => $catum->getIdcata()));
         }
 
-        return $this->render('cata/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:cata:edit.html.twig', array(
             'catum' => $catum,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class CataController extends Controller
     private function createDeleteForm(Cata $catum)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('cata_delete', array('id' => $catum->getId())))
+            ->setAction($this->generateUrl('cata_delete', array('id' => $catum->getIdcata())))
             ->setMethod('DELETE')
             ->getForm()
         ;

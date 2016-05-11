@@ -28,7 +28,7 @@ class RolesController extends Controller
 
         $roles = $em->getRepository('TekneiCtrlBundle:Roles')->findAll();
 
-        return $this->render('roles/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:roles:index.html.twig', array(
             'roles' => $roles,
         ));
     }
@@ -50,10 +50,10 @@ class RolesController extends Controller
             $em->persist($role);
             $em->flush();
 
-            return $this->redirectToRoute('roles_show', array('id' => $role->getId()));
+            return $this->redirectToRoute('roles_show', array('id' => $role->getIdroles()));
         }
 
-        return $this->render('roles/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:roles:new.html.twig', array(
             'role' => $role,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class RolesController extends Controller
     {
         $deleteForm = $this->createDeleteForm($role);
 
-        return $this->render('roles/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:roles:show.html.twig', array(
             'role' => $role,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class RolesController extends Controller
             $em->persist($role);
             $em->flush();
 
-            return $this->redirectToRoute('roles_edit', array('id' => $role->getId()));
+            return $this->redirectToRoute('roles_edit', array('id' => $role->getIdroles()));
         }
 
-        return $this->render('roles/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:roles:edit.html.twig', array(
             'role' => $role,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class RolesController extends Controller
     private function createDeleteForm(Roles $role)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('roles_delete', array('id' => $role->getId())))
+            ->setAction($this->generateUrl('roles_delete', array('id' => $role->getIdroles())))
             ->setMethod('DELETE')
             ->getForm()
         ;

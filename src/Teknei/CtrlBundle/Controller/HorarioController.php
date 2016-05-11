@@ -28,7 +28,7 @@ class HorarioController extends Controller
 
         $horarios = $em->getRepository('TekneiCtrlBundle:Horario')->findAll();
 
-        return $this->render('horario/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:horario:index.html.twig', array(
             'horarios' => $horarios,
         ));
     }
@@ -50,10 +50,10 @@ class HorarioController extends Controller
             $em->persist($horario);
             $em->flush();
 
-            return $this->redirectToRoute('horario_show', array('id' => $horario->getId()));
+            return $this->redirectToRoute('horario_show', array('id' => $horario->getIdhorario()));
         }
 
-        return $this->render('horario/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:horario:new.html.twig', array(
             'horario' => $horario,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class HorarioController extends Controller
     {
         $deleteForm = $this->createDeleteForm($horario);
 
-        return $this->render('horario/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:horario:show.html.twig', array(
             'horario' => $horario,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class HorarioController extends Controller
             $em->persist($horario);
             $em->flush();
 
-            return $this->redirectToRoute('horario_edit', array('id' => $horario->getId()));
+            return $this->redirectToRoute('horario_edit', array('id' => $horario->getIdhorario()));
         }
 
-        return $this->render('horario/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:horario:edit.html.twig', array(
             'horario' => $horario,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class HorarioController extends Controller
     private function createDeleteForm(Horario $horario)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('horario_delete', array('id' => $horario->getId())))
+            ->setAction($this->generateUrl('horario_delete', array('id' => $horario->getIdhorario())))
             ->setMethod('DELETE')
             ->getForm()
         ;

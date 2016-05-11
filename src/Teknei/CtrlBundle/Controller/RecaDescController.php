@@ -28,7 +28,7 @@ class RecaDescController extends Controller
 
         $recaDescs = $em->getRepository('TekneiCtrlBundle:RecaDesc')->findAll();
 
-        return $this->render('recadesc/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:recadesc:index.html.twig', array(
             'recaDescs' => $recaDescs,
         ));
     }
@@ -50,10 +50,10 @@ class RecaDescController extends Controller
             $em->persist($recaDesc);
             $em->flush();
 
-            return $this->redirectToRoute('recadesc_show', array('id' => $recaDesc->getId()));
+            return $this->redirectToRoute('recadesc_show', array('id' => $recaDesc->getIdrecaDesc()));
         }
 
-        return $this->render('recadesc/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:recadesc:new.html.twig', array(
             'recaDesc' => $recaDesc,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class RecaDescController extends Controller
     {
         $deleteForm = $this->createDeleteForm($recaDesc);
 
-        return $this->render('recadesc/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:recadesc:show.html.twig', array(
             'recaDesc' => $recaDesc,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class RecaDescController extends Controller
             $em->persist($recaDesc);
             $em->flush();
 
-            return $this->redirectToRoute('recadesc_edit', array('id' => $recaDesc->getId()));
+            return $this->redirectToRoute('recadesc_edit', array('id' => $recaDesc->getIdrecaDesc()));
         }
 
-        return $this->render('recadesc/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:recadesc:edit.html.twig', array(
             'recaDesc' => $recaDesc,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class RecaDescController extends Controller
     private function createDeleteForm(RecaDesc $recaDesc)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('recadesc_delete', array('id' => $recaDesc->getId())))
+            ->setAction($this->generateUrl('recadesc_delete', array('id' => $recaDesc->getIdrecaDesc())))
             ->setMethod('DELETE')
             ->getForm()
         ;

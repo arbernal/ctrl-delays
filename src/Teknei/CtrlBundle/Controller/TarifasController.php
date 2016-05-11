@@ -28,7 +28,7 @@ class TarifasController extends Controller
 
         $tarifas = $em->getRepository('TekneiCtrlBundle:Tarifas')->findAll();
 
-        return $this->render('tarifas/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:tarifas:index.html.twig', array(
             'tarifas' => $tarifas,
         ));
     }
@@ -50,10 +50,10 @@ class TarifasController extends Controller
             $em->persist($tarifa);
             $em->flush();
 
-            return $this->redirectToRoute('tarifas_show', array('id' => $tarifa->getId()));
+            return $this->redirectToRoute('tarifas_show', array('id' => $tarifa->getIdtari()));
         }
 
-        return $this->render('tarifas/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:tarifas:new.html.twig', array(
             'tarifa' => $tarifa,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class TarifasController extends Controller
     {
         $deleteForm = $this->createDeleteForm($tarifa);
 
-        return $this->render('tarifas/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:tarifas:show.html.twig', array(
             'tarifa' => $tarifa,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class TarifasController extends Controller
             $em->persist($tarifa);
             $em->flush();
 
-            return $this->redirectToRoute('tarifas_edit', array('id' => $tarifa->getId()));
+            return $this->redirectToRoute('tarifas_edit', array('id' => $tarifa->getIdtari()));
         }
 
-        return $this->render('tarifas/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:tarifas:edit.html.twig', array(
             'tarifa' => $tarifa,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class TarifasController extends Controller
     private function createDeleteForm(Tarifas $tarifa)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('tarifas_delete', array('id' => $tarifa->getId())))
+            ->setAction($this->generateUrl('tarifas_delete', array('id' => $tarifa->getIdtari())))
             ->setMethod('DELETE')
             ->getForm()
         ;

@@ -28,7 +28,7 @@ class RetardosController extends Controller
 
         $retardos = $em->getRepository('TekneiCtrlBundle:Retardos')->findAll();
 
-        return $this->render('retardos/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:retardos:index.html.twig', array(
             'retardos' => $retardos,
         ));
     }
@@ -50,10 +50,10 @@ class RetardosController extends Controller
             $em->persist($retardo);
             $em->flush();
 
-            return $this->redirectToRoute('retardos_show', array('id' => $retardo->getId()));
+            return $this->redirectToRoute('retardos_show', array('id' => $retardo->getIdretardos()));
         }
 
-        return $this->render('retardos/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:retardos:new.html.twig', array(
             'retardo' => $retardo,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class RetardosController extends Controller
     {
         $deleteForm = $this->createDeleteForm($retardo);
 
-        return $this->render('retardos/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:retardos:show.html.twig', array(
             'retardo' => $retardo,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class RetardosController extends Controller
             $em->persist($retardo);
             $em->flush();
 
-            return $this->redirectToRoute('retardos_edit', array('id' => $retardo->getId()));
+            return $this->redirectToRoute('retardos_edit', array('id' => $retardo->getIdretardos()));
         }
 
-        return $this->render('retardos/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:retardos:edit.html.twig', array(
             'retardo' => $retardo,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class RetardosController extends Controller
     private function createDeleteForm(Retardos $retardo)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('retardos_delete', array('id' => $retardo->getId())))
+            ->setAction($this->generateUrl('retardos_delete', array('id' => $retardo->getIdretardos())))
             ->setMethod('DELETE')
             ->getForm()
         ;

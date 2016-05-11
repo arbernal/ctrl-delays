@@ -28,7 +28,7 @@ class MultasController extends Controller
 
         $multas = $em->getRepository('TekneiCtrlBundle:Multas')->findAll();
 
-        return $this->render('multas/index.html.twig', array(
+        return $this->render('TekneiCtrlBundle:multas:index.html.twig', array(
             'multas' => $multas,
         ));
     }
@@ -50,10 +50,10 @@ class MultasController extends Controller
             $em->persist($multa);
             $em->flush();
 
-            return $this->redirectToRoute('multas_show', array('id' => $multa->getId()));
+            return $this->redirectToRoute('multas_show', array('id' => $multa->getIdmultas()));
         }
 
-        return $this->render('multas/new.html.twig', array(
+        return $this->render('TekneiCtrlBundle:multas:new.html.twig', array(
             'multa' => $multa,
             'form' => $form->createView(),
         ));
@@ -69,7 +69,7 @@ class MultasController extends Controller
     {
         $deleteForm = $this->createDeleteForm($multa);
 
-        return $this->render('multas/show.html.twig', array(
+        return $this->render('TekneiCtrlBundle:multas:show.html.twig', array(
             'multa' => $multa,
             'delete_form' => $deleteForm->createView(),
         ));
@@ -92,10 +92,10 @@ class MultasController extends Controller
             $em->persist($multa);
             $em->flush();
 
-            return $this->redirectToRoute('multas_edit', array('id' => $multa->getId()));
+            return $this->redirectToRoute('multas_edit', array('id' => $multa->getIdmultas()));
         }
 
-        return $this->render('multas/edit.html.twig', array(
+        return $this->render('TekneiCtrlBundle:multas:/edit.html.twig', array(
             'multa' => $multa,
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
@@ -132,7 +132,7 @@ class MultasController extends Controller
     private function createDeleteForm(Multas $multa)
     {
         return $this->createFormBuilder()
-            ->setAction($this->generateUrl('multas_delete', array('id' => $multa->getId())))
+            ->setAction($this->generateUrl('multas_delete', array('id' => $multa->getIdmultas())))
             ->setMethod('DELETE')
             ->getForm()
         ;
