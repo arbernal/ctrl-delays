@@ -15,7 +15,7 @@ class RetardosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('horaLlega', 'time')
+            ->add('horaLlega')
             ->add('idrecaSema')
             ->add('idesta')
             ->add('idusuario')
