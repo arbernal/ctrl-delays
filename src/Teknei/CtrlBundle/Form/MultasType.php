@@ -15,12 +15,12 @@ class MultasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tiemTran', 'time')
-            ->add('subtotal')
-            ->add('total')
-            ->add('idesta')
-            ->add('idrecaDesc')
-            ->add('idestapago')
+            ->add('tiemTran', null,array('label' => 'TIEMPO TRASCURRIDO'))
+            ->add('subtotal', null,array('label' => 'SUBTOTAL'))
+            ->add('total', null,array('label' => 'TOTAL'))
+            ->add('idrecaDesc', null,array('label' => 'RECARGADESC'))
+            ->add('idestapago',null,array('label' => 'ESTATUS DE PAGO'))
+            ->add('idesta', null,array('label' => 'ESTATUS'))
         ;
     }
     

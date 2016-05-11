@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cata list</h1>
 
-    <table>
+  <h1 class="text-info"> CATA</h1>
+      <ul class="nav nav-pills">
+      
+      <table = "table table-bordered">
         <thead>
             <tr>
-                <th>Idcata</th>
-                <th>Desccort</th>
-                <th>Desccomp</th>
-                <th>Idesta</th>
-                <th>Actions</th>
+                <th>Descripcion corta</th>
+                <th>Descripcion completa</th>
+                <th>Estatus</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -19,14 +20,18 @@
                 <td><a href="{{ path('cata_show', { 'id': catum.idcata }) }}">{{ catum.idcata }}</a></td>
                 <td>{{ catum.descCort }}</td>
                 <td>{{ catum.descComp }}</td>
-                <td>{{ catum.idesta }}</td>
+             
+                    
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('cata_show', { 'id': catum.idcata }) }}">show</a>
+                            <a href="{{ path('cata_show', { 'id': catum.idcata }) }}">Ver</a>
                         </li>
                         <li>
-                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">edit</a>
+                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">Editar</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">Elimnar</a>
                         </li>
                     </ul>
                 </td>
@@ -37,7 +42,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('cata_new') }}">Create a new entry</a>
+            <a href="{{ path('cata_new') }}">Nuevo</a>
         </li>
     </ul>
 {% endblock %}

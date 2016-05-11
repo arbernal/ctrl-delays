@@ -15,8 +15,8 @@ class HorarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('dia', 'date')
-            ->add('hora', 'time')
+            ->add('dia') 
+            ->add('hora')
             ->add('idesta')
         ;
     }

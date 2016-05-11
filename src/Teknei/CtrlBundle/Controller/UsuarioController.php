@@ -50,7 +50,7 @@ class UsuarioController extends Controller
             $em->persist($usuario);
             $em->flush();
 
-            return $this->redirectToRoute('usuario_show', array('id' => $usuario->getIdusuario()));
+            return $this->redirectToRoute('usuario_index');
         }
 
         return $this->render('TekneiCtrlBundle:usuario:new.html.twig', array(
