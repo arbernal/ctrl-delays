@@ -8,6 +8,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class RolesType extends AbstractType
 {
@@ -24,7 +25,14 @@ class RolesType extends AbstractType
             	$form = $event->getForm();
             
             	if (!$rol || null === $rol->getIdroles()) {
- 
+            		$form ->add( 'idesta', EntityType::class, array(
+							    'class' => 'TekneiCtrlBundle:Cata',
+            					'choice_label'  =>  'desComp' ,
+							    'query_builder' => function (EntityRepository $er) {
+							        return $er->createQueryBuilder('u')
+							             ->where('u.idcata = 1');
+							    }, 
+							) );
             	}
             	else {
             		$form ->add( 'idesta' , EntityType :: class , array (
