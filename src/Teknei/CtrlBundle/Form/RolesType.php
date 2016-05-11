@@ -17,14 +17,21 @@ class RolesType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nombre',null,array('label' => 'Nombre de ejemplo:'));
+        $builder->add('nombre',null,array('label' => 'Rol'));
             
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             	$rol = $event->getData();
             	$form = $event->getForm();
             
             	if (!$rol || null === $rol->getIdroles()) {
- 
+            		$form ->add( 'idesta', EntityType::class, array(
+							    'class' => 'TekneiCtrlBundle:Cata',
+            					'choice_label'  =>  'desComp' ,
+							    'query_builder' => function (EntityRepository $er) {
+							        return $er->createQueryBuilder('u')
+							             ->where('u.idcata = 1');
+							    }, 
+							) );
             	}
             	else {
             		$form ->add( 'idesta' , EntityType :: class , array (
