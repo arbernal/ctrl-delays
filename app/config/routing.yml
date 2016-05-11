@@ -7,3 +7,11 @@ app:
     resource: "@AppBundle/Controller/"
     type:     annotation
 
+login:
+   path: /teknei_ctrl
+   defaults:
+        _controller: TekneiCtrlBundle:Security:login
+        permanent: true
+
+login_check:
+    path:   /login_check
