@@ -27,17 +27,20 @@ class RolesType extends AbstractType
             	if (!$rol || null === $rol->getIdroles()) {
             		$form ->add( 'idesta', EntityType::class, array(
 							    'class' => 'TekneiCtrlBundle:Cata',
-            					'choice_label'  =>  'desComp' ,
+            					'choice_label'  =>  'descComp' ,
 							    'query_builder' => function (EntityRepository $er) {
 							        return $er->createQueryBuilder('u')
-							             ->where('u.idcata = 1');
+							             	->where('u.descComp = \'ACTIVO\' ');
 							    }, 'label' => 'ESTATUS',
-							) );
+												    
+							    
+							    ) );
             	}
             	else {
             		$form ->add( 'idesta' , EntityType :: class , array (
             				'class' => 'TekneiCtrlBundle:Cata' ,
-            				'choice_label'  =>  'desComp' ,
+            				'choice_label'  =>  'descComp' ,
+            				
             		));
             	}
             });
