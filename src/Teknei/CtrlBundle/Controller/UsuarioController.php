@@ -110,9 +110,10 @@ class UsuarioController extends Controller
      */
     public function deleteAction(Request $request, Usuario $usuario)
     {
-
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($usuario);
+    		$em = $this->getDoctrine()->getManager();
+    		$cata = $em->getRepository('TekneiCtrlBundle:cata')->find(2);
+    		$usuario->setIdesta($cata);
+            $em->merge($usuario);
             $em->flush();
         
 
