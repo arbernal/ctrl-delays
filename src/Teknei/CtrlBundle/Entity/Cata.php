@@ -36,9 +36,12 @@ class Cata
     private $descComp;
 
     /**
-     * @var integer
+     * @var \Cata
      *
-     * @ORM\Column(name="idEsta", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Cata")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idEsta", referencedColumnName="idCata")
+     * })
      */
     private $idesta;
 
@@ -105,11 +108,11 @@ class Cata
     /**
      * Set idesta
      *
-     * @param integer $idesta
+     * @param \Teknei\CtrlBundle\Entity\Cata $idesta
      *
-     * @return Cata
+     * @return Horario
      */
-    public function setIdesta($idesta)
+    public function setIdesta(\Teknei\CtrlBundle\Entity\Cata $idesta = null)
     {
         $this->idesta = $idesta;
 
@@ -119,7 +122,7 @@ class Cata
     /**
      * Get idesta
      *
-     * @return integer
+     * @return \Teknei\CtrlBundle\Entity\Cata
      */
     public function getIdesta()
     {
