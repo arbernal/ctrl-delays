@@ -45,7 +45,19 @@ class Cata
      */
     private $idesta;
 
-
+    /**
+     * Set idcata
+     *
+     * @param integer $idcata
+     *
+     * @return Cata
+     */
+    public function setIdcata($idcata)
+    {
+    	$this->idcata = $idcata;
+    
+    	return $this;
+    }
 
     /**
      * Get idcata

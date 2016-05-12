@@ -105,19 +105,16 @@ class UsuarioController extends Controller
     /**
      * Deletes a Usuario entity.
      *
-     * @Route("/{id}", name="usuario_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="usuario_delete")
+     *  @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, Usuario $usuario)
     {
-        $form = $this->createDeleteForm($usuario);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->remove($usuario);
             $em->flush();
-        }
+        
 
         return $this->redirectToRoute('usuario_index');
     }
