@@ -5,6 +5,10 @@ namespace Teknei\CtrlBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class CataType extends AbstractType
 {
@@ -15,10 +19,33 @@ class CataType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('descCort', null,array('label' => 'Descripcion corta'))
-            ->add('descComp', null,array('label' => 'Descripcion completa'))
-            ->add('idesta', null,array('label' => 'Estatus'))
+            ->add('descCort')
+            ->add('descComp')
         ;
+            $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            	$cata = $event->getData();
+            	$form = $event->getForm();
+            
+            	if (!$cata || null === $cata->getIdcata()) {
+            		$form ->add( 'idesta', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Cata',
+            				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descComp = \'ACTIVO\' ');
+            				}, 'label' => 'ESTATUS',
+            
+            					
+            				) );
+            	}
+            	else {
+            		$form ->add( 'idesta' , EntityType :: class , array (
+            				'class' => 'TekneiCtrlBundle:Cata' ,
+            				'choice_label'  =>  'descComp' ,
+            
+            		));
+            	}
+            });
     }
     
     /**

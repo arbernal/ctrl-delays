@@ -36,11 +36,15 @@ class Cata
     private $descComp;
 
     /**
-     * @var integer
+     * @var \Cata
      *
-     * @ORM\Column(name="idEsta", type="integer", nullable=true)
+     * @ORM\ManyToOne(targetEntity="Cata")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="idEsta", referencedColumnName="idCata")
+     * })
      */
     private $idesta;
+    
 
 
 }
