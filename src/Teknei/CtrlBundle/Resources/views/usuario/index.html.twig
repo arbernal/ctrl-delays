@@ -29,7 +29,7 @@
                             <a href="{{ path('usuario_edit', { 'id': usuario.idusuario }) }}">Editar</a>
                         </li>
            <li>
-				 <a href="{{ path('usuario_delete', { 'id': usuario.idusuario }) }}">Eliminar</a>
+				 <a href="{{ path('usuario_delete', { 'id': usuario.idusuario }) }}" onclick="return confirm('¿Desea eliminar este elemento?')">Eliminar</a>
         </li> 
         </ul>
                 </td>
