@@ -22,15 +22,8 @@
 
     <ul>
         <li>
-            <a href="{{ path('usuario_index') }}">Back to the list</a>
+            <a href="{{ path('usuario_index') }}">Aceptar</a>
         </li>
-        <li>
-            <a href="{{ path('usuario_edit', { 'id': usuario.idusuario }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
+        
     </ul>
 {% endblock %}

@@ -5,6 +5,10 @@ namespace Teknei\CtrlBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class RetardosType extends AbstractType
 {
@@ -17,12 +21,41 @@ class RetardosType extends AbstractType
         $builder
             ->add('horaLlega')
             ->add('idrecaSema')
-            ->add('idesta')
-            ->add('idusuario')
+            ->add( 'idusuario', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Usuario',
+            				'choice_label'  =>  'usuario' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->join('u.idesta', 'e')
+            				->where('e.descComp =  \'ACTIVO\'');
+            				}, 'label' => 'Usuario',
+            				) )
             ->add('idhorario')
             ->add('idmultas')
             ->add('idtari')
         ;
+            $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            	$retardo = $event->getData();
+            	$form = $event->getForm();
+            
+            	if (!$retardo || null === $retardo->getIdretardos()) {
+            		$form ->add( 'idesta', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Cata',
+            				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descComp = \'ACTIVO\' ');
+            				}, 'label' => 'ESTATUS',
+            				) );
+            	}
+            	else {
+            		$form ->add( 'idesta' , EntityType :: class , array (
+            				'class' => 'TekneiCtrlBundle:Cata' ,
+            				'choice_label'  =>  'descComp' ,
+            		));
+            	}
+            });
+            
     }
     
     /**

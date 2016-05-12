@@ -6,10 +6,10 @@
     <table = "table table-bordered">
         <thead>
             <tr>
-                <th>NOMBRE</th>
-                  <th>ROL</th>
-                  <th>ESTATUS</th>
-                <th>ACCION</th>
+                <th>Nombre</th>
+                  <th>Rol</th>
+                  <th>Estatus</th>
+                <th>Accion</th>
             </tr>
         </thead>
         <tbody>
@@ -17,8 +17,9 @@
             <tr>
                 <td><a href="{{ path('usuario_show', { 'id': usuario.idusuario }) }}">{{ usuario.idusuario }}</a></td>
                 <td>{{ usuario.usuario }}</td>
-                <td>{{ usuario.idroles.nombre }}</td>
                 <td>{{ usuario.idesta.descComp}}</td> 
+                <td>{{ usuario.idroles.nombre }}</td>
+               
                 <td>
                     <ul>
                         <li>
@@ -27,7 +28,10 @@
                         <li>
                             <a href="{{ path('usuario_edit', { 'id': usuario.idusuario }) }}">Editar</a>
                         </li>
-                    </ul>
+           <li>
+				 <a href="{{ path('usuario_delete', { 'id': usuario.idusuario }) }}">Eliminar</a>
+        </li> 
+        </ul>
                 </td>
             </tr>
         {% endfor %}
