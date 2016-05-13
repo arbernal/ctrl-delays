@@ -92,7 +92,7 @@ class CataController extends Controller
             $em->persist($catum);
             $em->flush();
 
-            return $this->redirectToRoute('cata_edit', array('id' => $catum->getIdcata()));
+            return $this->redirectToRoute('cata_index');
         }
 
         return $this->render('TekneiCtrlBundle:cata:edit.html.twig', array(
