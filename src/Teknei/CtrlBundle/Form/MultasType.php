@@ -19,7 +19,7 @@ class MultasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('Usuario', EntityType::class, array(
+           ->add('Usuario', EntityType::class, array(
             				'class' => 'TekneiCtrlBundle:Usuario',
             				'choice_label'  =>  'usuario' ,
             				'query_builder' => function (EntityRepository $er) {

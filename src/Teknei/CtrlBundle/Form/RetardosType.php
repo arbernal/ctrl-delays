@@ -42,7 +42,7 @@ class RetardosType extends AbstractType
             				}, 'label' => 'Horario',
             				'choice_label' => function ($horario) {
             				return $horario->getDia()->format('d-m-Y').' '
-            					   .$horario->getHora()->format('H:i:s');;
+            					   .$horario->getHora()->format('H:i:s');
             				}
             				
             				

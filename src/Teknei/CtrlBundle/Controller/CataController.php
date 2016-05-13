@@ -28,7 +28,7 @@ class CataController extends Controller
 		$catas1 = array();
         $catas = $em->getRepository('TekneiCtrlBundle:Cata')->findAll();
         foreach ( $catas as $cata) {
-        	$value = $em->getRepository('TekneiCtrlBundle:cata')->
+        	$value = $em->getRepository('TekneiCtrlBundle:Cata')->
         		find($cata->getIdesta()->getIdcata());
         	$cata->setIdesta($value);
         	array_push($catas1,$cata);
