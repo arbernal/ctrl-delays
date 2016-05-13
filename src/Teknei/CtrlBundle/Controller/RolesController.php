@@ -50,7 +50,7 @@ class RolesController extends Controller
             $em->persist($role);
             $em->flush();
 
-            return $this->redirectToRoute('roles_show', array('id' => $role->getIdroles()));
+            return $this->redirectToRoute('roles_index');
         }
 
         return $this->render('TekneiCtrlBundle:roles:new.html.twig', array(
@@ -92,7 +92,7 @@ class RolesController extends Controller
             $em->persist($role);
             $em->flush();
 
-            return $this->redirectToRoute('roles_edit', array('id' => $role->getIdroles()));
+            return $this->redirectToRoute('roles_index');
         }
 
         return $this->render('TekneiCtrlBundle:roles:edit.html.twig', array(
@@ -105,27 +105,25 @@ class RolesController extends Controller
     /**
      * Deletes a Roles entity.
      *
-     * @Route("/{id}", name="roles_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="roles_delete")
+     *  @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, Roles $role)
     {
-        $form = $this->createDeleteForm($role);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($role);
+    		$em = $this->getDoctrine()->getManager();
+    		$cata = $em->getRepository('TekneiCtrlBundle:cata')->find(2);
+    		$role->setIdesta($cata);
+            $em->merge($role);
             $em->flush();
-        }
+        
 
         return $this->redirectToRoute('roles_index');
     }
 
     /**
-     * Creates a form to delete a Roles entity.
+     * Creates a form to delete a Usuario entity.
      *
-     * @param Roles $role The Roles entity
+     * @param Usuario $usuario The Usuario entity
      *
      * @return \Symfony\Component\Form\Form The form
      */

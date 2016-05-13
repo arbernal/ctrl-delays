@@ -25,11 +25,17 @@ class CataController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
+		$catas1 = array();
         $catas = $em->getRepository('TekneiCtrlBundle:Cata')->findAll();
-
+        foreach ( $catas as $cata) {
+        	$value = $em->getRepository('TekneiCtrlBundle:cata')->
+        		find($cata->getIdesta()->getIdcata());
+        	$cata->setIdesta($value);
+        	array_push($catas1,$cata);
+        }	
+        
         return $this->render('TekneiCtrlBundle:cata:index.html.twig', array(
-            'catas' => $catas,
+            'catas' => $catas1,
         ));
     }
 

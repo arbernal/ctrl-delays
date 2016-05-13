@@ -8,7 +8,7 @@
             <tr>
                 <th>Nombre</th>
                 <th>Rol</th>
-                <th>Actions</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +25,9 @@
                         <li>
                             <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">edit</a>
                         </li>
+                        <li>
+				 <a href="{{ path('roles_delete', { 'id': role.idroles }) }}" onclick="return confirm('¿Desea eliminar este elemento?')">Eliminar</a>
+        </li> 
                     </ul>
                 </td>
             </tr>

@@ -35,13 +35,17 @@ class RetardosType extends AbstractType
             
             ->add('idhorario',  EntityType::class, array(
             				'class' => 'TekneiCtrlBundle:Horario',
-            				'choice_label'  =>  'idhorario' ,
             				'query_builder' => function (EntityRepository $er) {
             				return $er->createQueryBuilder('u')
             				->join('u.idesta', 'e')
             				->where('e.descComp =  \'ACTIVO\'');
             				}, 'label' => 'Horario',
-                 
+            				'choice_label' => function ($horario) {
+            				return $horario->getDia()->format('d-m-Y').' '
+            					   .$horario->getHora()->format('H:i:s');;
+            				}
+            				
+            				
             				))
             				
             ->add('idtari', EntityType::class, array(

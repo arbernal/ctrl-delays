@@ -50,7 +50,7 @@ class RetardosController extends Controller
             $em->persist($retardo);
             $em->flush();
 
-            return $this->redirectToRoute('retardos_index', array('id' => $retardo->getIdretardos()));
+            return $this->redirectToRoute('retardos_index');
         }
 
         return $this->render('TekneiCtrlBundle:retardos:new.html.twig', array(
@@ -92,7 +92,7 @@ class RetardosController extends Controller
             $em->persist($retardo);
             $em->flush();
 
-            return $this->redirectToRoute('retardos_edit', array('id' => $retardo->getIdretardos()));
+            return $this->redirectToRoute('retardos_edit');
         }
 
         return $this->render('TekneiCtrlBundle:retardos:edit.html.twig', array(

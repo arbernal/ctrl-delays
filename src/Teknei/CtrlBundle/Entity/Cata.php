@@ -110,7 +110,7 @@ class Cata
      *
      * @param \Teknei\CtrlBundle\Entity\Cata $idesta
      *
-     * @return Horario
+     * @return Cata
      */
     public function setIdesta(\Teknei\CtrlBundle\Entity\Cata $idesta = null)
     {
