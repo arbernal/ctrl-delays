@@ -50,7 +50,7 @@ class RetardosController extends Controller
             $em->persist($retardo);
             $em->flush();
 
-            return $this->redirectToRoute('retardos_show', array('id' => $retardo->getIdretardos()));
+            return $this->redirectToRoute('retardos_index', array('id' => $retardo->getIdretardos()));
         }
 
         return $this->render('TekneiCtrlBundle:retardos:new.html.twig', array(
@@ -105,24 +105,22 @@ class RetardosController extends Controller
     /**
      * Deletes a Retardos entity.
      *
-     * @Route("/{id}", name="retardos_delete")
-     * @Method("DELETE")
-     */
+     *  @Route("/{id}/delete", name="retardos_delete")
+    *  @Method({"GET", "POST"})
+    */
     public function deleteAction(Request $request, Retardos $retardo)
     {
-        $form = $this->createDeleteForm($retardo);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($retardo);
-            $em->flush();
-        }
-
-        return $this->redirectToRoute('retardos_index');
+    	$em = $this->getDoctrine()->getManager();
+    	$cata = $em->getRepository('TekneiCtrlBundle:cata')->find(2);
+    	$retardo->setIdesta($cata);
+    	$em->merge($retardo);
+    	$em->flush();
+    
+    
+    	return $this->redirectToRoute('retardos_index');
     }
-
-    /**
+    
+/**
      * Creates a form to delete a Retardos entity.
      *
      * @param Retardos $retardo The Retardos entity

@@ -105,19 +105,16 @@ class CataController extends Controller
     /**
      * Deletes a Cata entity.
      *
-     * @Route("/{id}", name="cata_delete")
-     * @Method("DELETE")
+     *  @Route("/{id}/delete", name="cata_delete")
+     *  @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, Cata $catum)
     {
-        $form = $this->createDeleteForm($catum);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($catum);
+    		$em = $this->getDoctrine()->getManager();
+    		$cata = $em->getRepository('TekneiCtrlBundle:cata')->find(2);
+    		$catum->setIdesta($cata);
+            $em->merge($catum);
             $em->flush();
-        }
 
         return $this->redirectToRoute('cata_index');
     }

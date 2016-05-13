@@ -5,6 +5,10 @@ namespace Teknei\CtrlBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class TarifasType extends AbstractType
 {
@@ -16,10 +20,43 @@ class TarifasType extends AbstractType
     {
         $builder
             ->add('tarifa')
-            ->add('idesta')
-            ->add('idtipotari')
-        ;
-    }
+            ->add('idtipotari',EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Cata',
+            				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descCort = \'ES_TI\' ');
+            				}, 'label' => 'Tipo de tarifa',
+            				) );
+            
+      
+            $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            	$tarifa = $event->getData();
+            	$form = $event->getForm();
+            
+            	if (!$tarifa || null === $tarifa->getIdtari()) {
+            		$form ->add( 'idesta', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Cata',
+            				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descComp = \'ACTIVO\' ');
+            				}, 'label' => 'Estatus',
+            				) );
+            	}
+            	else {
+            		$form ->add( 'idesta' , EntityType :: class , array (
+            				'class' => 'TekneiCtrlBundle:Cata' ,
+            				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descCort = \'ES_CA\' ');
+            				}, 'label' => 'Estatus',
+            		));
+            	}
+            }); 
+            
+            }
     
     /**
      * @param OptionsResolver $resolver

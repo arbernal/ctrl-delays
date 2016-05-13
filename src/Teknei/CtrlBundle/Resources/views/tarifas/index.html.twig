@@ -6,8 +6,10 @@
     <table>
         <thead>
             <tr>
-                <th>Idtari</th>
+                
                 <th>Tarifa</th>
+                <th>Tipo de Tarifa</th>
+                <th>Estatus</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -15,7 +17,9 @@
         {% for tarifa in tarifas %}
             <tr>
                 <td><a href="{{ path('tarifas_show', { 'id': tarifa.idtari }) }}">{{ tarifa.idtari }}</a></td>
-                <td>{{ tarifa.tarifa }}</td>
+                <td>{{ tarifa.tarifa }}</td>  
+                 <td>{{ tarifa.idtipotari.descComp}}</td>
+                 <td>{{ tarifa.idesta.descComp}}</td>  
                 <td>
                     <ul>
                         <li>

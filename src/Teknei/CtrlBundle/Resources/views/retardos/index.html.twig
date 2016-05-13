@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Retardos list</h1>
+    <h1>Juntas</h1>
 
     <table>
         <thead>
             <tr>
-                <th>Idretardos</th>
                 <th>Hora de Llegada</th>
-                <th>Idrecasema</th>
-                <th>Actions</th>
+                 <th>Usuario</th>
+                  <th>Horario</th>
+                   <th>Multas</th>
+                <th>Acción</th>
             </tr>
         </thead>
         <tbody>
@@ -17,7 +18,10 @@
             <tr>
                 <td><a href="{{ path('retardos_show', { 'id': retardo.idretardos }) }}">{{ retardo.idretardos }}</a></td>
                 <td>{% if retardo.horaLlega %}{{ retardo.horaLlega|date('H:i:s') }}{% endif %}</td>
-                <td>{{ retardo.idrecaSema }}</td>
+                <td>{{retardo.idusuario.usuario }}</td>
+                <td>{{retardo.idhorario.dia }}</td>
+                <td>{{retardo.idesta.descComp }}</td>
+                <td>{{retardo.idtari.tarifa }}</td>
                 <td>
                     <ul>
                         <li>
@@ -26,6 +30,7 @@
                         <li>
                             <a href="{{ path('retardos_edit', { 'id': retardo.idretardos }) }}">edit</a>
                         </li>
+                     <a href="{{ path('retardos_delete', { 'id': retardo.idretardos }) }}" onclick="return confirm('¿Desea eliminar este elemento?')">Eliminar</a>
                     </ul>
                 </td>
             </tr>

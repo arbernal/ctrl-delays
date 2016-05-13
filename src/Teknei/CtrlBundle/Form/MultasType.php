@@ -19,12 +19,24 @@ class MultasType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('tiemTran', null,array('label' => 'TIEMPO TRASCURRIDO'))
+            ->add('Usuario', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Usuario',
+            				'choice_label'  =>  'usuario' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descCort = \'ACTIVO\' ');
+            				}, 'label' => 'Usuario',
+            				) )    
             ->add('subtotal', null,array('label' => 'SUBTOTAL'))
-            ->add('total', null,array('label' => 'TOTAL'))
-            ->add('idrecaDesc', null,array('label' => 'RECARGo/DESCUENTO'))
-            ->add('idestapago',null,array('label' => 'ESTATUS DE PAGO'))
-            ->add('idesta', null,array('label' => 'ESTATUS'));
+            ->add('idrecaDesc', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:RecaDesc',
+            				'choice_label'  =>  'porce' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descCort = \'ACTIVO\' ');
+            				}, 'label' => 'Recargo/Descuento',
+            				) )    
+            ->add('total', null,array('label' => 'Total'));           
         
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             	$multas = $event->getData();

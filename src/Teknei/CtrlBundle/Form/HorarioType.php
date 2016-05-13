@@ -5,6 +5,10 @@ namespace Teknei\CtrlBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\FormEvent;
+use Symfony\Component\Form\FormEvents;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use Doctrine\ORM\EntityRepository;
 
 class HorarioType extends AbstractType
 {
@@ -17,9 +21,36 @@ class HorarioType extends AbstractType
         $builder
             ->add('dia') 
             ->add('hora')
-            ->add('idesta')
+            
         ;
-    }
+    $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
+            	$horario = $event->getData();
+            	$form = $event->getForm();
+            
+            	if (!$horario || null === $horario->getIdhorario()) {
+            		$form ->add( 'idesta', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Cata',
+            				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descComp = \'ACTIVO\' ');
+            				}, 'label' => 'Estatus',
+            				) );
+            	}
+            else {
+            		$form ->add( 'idesta' , EntityType :: class , array (
+            				'class' => 'TekneiCtrlBundle:Cata' ,
+            				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descCort = \'ES_CA\' ');
+            				}, 'label' => 'Estatus',
+            		));
+            	}
+            }); 
+            
+            }
+    
     
     /**
      * @param OptionsResolver $resolver

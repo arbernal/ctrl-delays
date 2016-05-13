@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Horario list</h1>
+    <h1>Horario</h1>
 
     <table>
         <thead>
@@ -22,10 +22,10 @@
                 <td>
                     <ul>
                         <li>
-                            <a href="{{ path('horario_show', { 'id': horario.idhorario }) }}">show</a>
+                            <a href="{{ path('horario_show', { 'id': horario.idhorario }) }}">Ver</a>
                         </li>
                         <li>
-                            <a href="{{ path('horario_edit', { 'id': horario.idhorario }) }}">edit</a>
+                            <a href="{{ path('horario_edit', { 'id': horario.idhorario }) }}">Editar</a>
                         </li>
                     </ul>
                 </td>

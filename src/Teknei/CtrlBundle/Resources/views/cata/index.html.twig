@@ -20,7 +20,7 @@
                 <td><a href="{{ path('cata_show', { 'id': catum.idcata }) }}">{{ catum.idcata }}</a></td>
                 <td>{{ catum.descCort }}</td>
                 <td>{{ catum.descComp }}</td>
-             
+                   
                     
                 <td>
                     <ul>
@@ -31,8 +31,8 @@
                             <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">Editar</a>
                         </li>
                         <li>
-                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">Elimnar</a>
-                        </li>
+				 <a href="{{ path('cata_delete', { 'id': catum.idcata }) }}" onclick="return confirm('¿Desea eliminar este elemento?')">Eliminar</a>
+        </li> 
                     </ul>
                 </td>
             </tr>

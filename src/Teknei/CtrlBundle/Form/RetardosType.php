@@ -19,8 +19,9 @@ class RetardosType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('horaLlega')
-            ->add('idrecaSema')
+        
+     
+            
             ->add( 'idusuario', EntityType::class, array(
             				'class' => 'TekneiCtrlBundle:Usuario',
             				'choice_label'  =>  'usuario' ,
@@ -30,10 +31,29 @@ class RetardosType extends AbstractType
             				->where('e.descComp =  \'ACTIVO\'');
             				}, 'label' => 'Usuario',
             				) )
-            ->add('idhorario')
-            ->add('idmultas')
-            ->add('idtari')
-        ;
+            ->add( 'horaLlega', null,array('label' => 'Hora de Llegada'))
+            
+            ->add('idhorario',  EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Horario',
+            				'choice_label'  =>  'idhorario' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->join('u.idesta', 'e')
+            				->where('e.descComp =  \'ACTIVO\'');
+            				}, 'label' => 'Horario',
+                 
+            				))
+            				
+            ->add('idtari', EntityType::class, array(
+            				'class' => 'TekneiCtrlBundle:Tarifas',
+            				'choice_label'  =>  'tarifa' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->join('u.idesta', 'e')
+            				->where('e.descComp =  \'ACTIVO\'');
+            				}, 'label' => 'Tipo de tarifa',
+                 
+            				));
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             	$retardo = $event->getData();
             	$form = $event->getForm();
@@ -48,15 +68,20 @@ class RetardosType extends AbstractType
             				}, 'label' => 'ESTATUS',
             				) );
             	}
-            	else {
+            else {
             		$form ->add( 'idesta' , EntityType :: class , array (
             				'class' => 'TekneiCtrlBundle:Cata' ,
             				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descCort = \'ES_CA\' ');
+            				}, 'label' => 'Estatus',
             		));
             	}
-            });
+            }); 
             
-    }
+            }
+    
     
     /**
      * @param OptionsResolver $resolver

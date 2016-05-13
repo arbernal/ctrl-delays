@@ -19,8 +19,9 @@ class CataType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('descCort')
-            ->add('descComp')
+            ->add('descCort', null,array('label' => 'Descripción corta'))
+            ->add('descComp', null,array('label' => 'Descripción completa'))
+            ->add('idesta', null,array('label' => 'Estatus'))
         ;
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
             	$cata = $event->getData();
@@ -42,6 +43,10 @@ class CataType extends AbstractType
             		$form ->add( 'idesta' , EntityType :: class , array (
             				'class' => 'TekneiCtrlBundle:Cata' ,
             				'choice_label'  =>  'descComp' ,
+            				'query_builder' => function (EntityRepository $er) {
+            				return $er->createQueryBuilder('u')
+            				->where('u.descCort = \'ES_CA\' ');
+            				}, 'label' => 'ESTATUS',
             
             		));
             	}
