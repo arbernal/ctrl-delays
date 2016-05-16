@@ -1,16 +1,17 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Nueva Junta</h1>
+    <h1 class="text-info"> Editar Junta</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-       <input type="submit" value="Editar" />
+       <input type="submit" value="Guardar" />
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('retardos_index') }}">	Cancelar</a>
-        </li>
-        </ul>
+        
+        <ul>
+        <label class="checkbox-inline">
+            <a href="{{ path('retardos_index') }}">
+       <label><button type="button" class="btn btn-primary btn-xs">Regresar</button></a></label>
+        
+    </ul>
 {% endblock %}

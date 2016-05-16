@@ -1,84 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-
-<style>
-#header {
-    background-color:purple;
-    color:white;
-    text-align:center;
-    padding:10px;
-	border: 2px solid green;
-}
-#nav {
-    line-height:30px;
-    background-color:#eeeeee;
-    height:500px00px;
-    width:200px00px;
-	text-align:left;
-    float:center-left;
-    padding:5px;	      
-	border: 2px solid green;
-}
-#section {
-    width:595px;
-    float:left;
-	text-align:center;
-    padding:10px;	 	 
-	border: 2px solid green;
-}
-#footer {
-    background-color:purple;
-    color:white;
-    clear:both;
-    text-align:center;
-   padding:10px;	 	 
-   border: 2px solid green;
-}
-
-#button{
-   padding: 0;
-   }
-
-#button li {
-  display: inline;
-}
-
-#button li a {
-float-left;
-padding: 10px;
-background-color: #9C27B0;
-color: #fff;
-}
-
-</style>
-
-</head>
-
 <body>
-<div id="header">
-<h1>Control de Retardos</h1>
-</div>
 
-<div id="nav">
-<ul id= "button">
-<li><a href="#">Inicio</a></li>
-<li><a href="#">Catalogos</a></li>
-<li><a href="#">Juntas</a></li>
-<li><a href="#">Multas</a></li>
+
+<div class="btn-group">
+  <button type="button" class="btn btn-primary">Inicio</button>
+ 
+  <button type="button" class="btn btn-primary">Catalogos</button>
+ 
+  <button type="button" class="btn btn-primary dropdown-toggle"
+          data-toggle="dropdown">
+    <span class="caret"></span>
+    <span class="sr-only">Desplegar menú</span>
+  </button>
+ 
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Cata</a></li>
+    <li><a href="#">Roles</a></li>
+    <li><a href="#">Horarios</a></li>
+    <li><a href="#">Tarifas</a></li>
+    <li><a href="#">Recargas y descuentos</a></li>
+  </ul>
+  <button type="button" class="btn btn-primary">Usuarios</button>
+   <button type="button" class="btn btn-primary">Juntas</button>
+    <button type="button" class="btn btn-primary">Multas</button>
+     <button type="button" class="btn btn-primary">Cerrar Sesion</button>
+</div>
 </div>
 
 {% block body %} 
 {% endblock %}
 
-<div id="section">
-<h2>Bienvenido</h2>
-<p>@Usuario</p>
-</div>
-
-<div id="footer">
-@Teknei S.A. de C.V 2016 © Todos los Derechos reservados
-</div>
 
 </body>
 </html>

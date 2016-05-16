@@ -1,11 +1,11 @@
 	{% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Editar usuario</h1>
+     <h1 class="text-info"> Editar usuario</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-          <input type="submit" value="Edit" />
+          <input type="submit" value="Guardar" />
     {{ form_end(edit_form) }}
 
     <ul>

@@ -19,12 +19,14 @@
 
 </head>
 <body>
+
 	<header class="container-fluid"> {% block header %} {{
 		include('header.html.twig') }} {% endblock %} </header>
 
 	<nav class="container">
 		<ul>
-
+  {% block menu %} {{
+		include('plantilla2.html.twig') }} {% endblock %}
 		</ul>
 	</nav>
 	<div class="container main">
