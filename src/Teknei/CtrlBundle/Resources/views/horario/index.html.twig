@@ -1,42 +1,45 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Horario</h1>
-
-    <table>
+    <h1 class="text-info"> Horario</h1>
+      <ul class="nav nav-pills">
+      <li class="active"> <a href="{{ path('usuario_new') }}" href="#" class="btn btn-primary btn-xs">Nuevo</a></li>
+    </ul>
+        
+  <table class="table table-striped">
         <thead>
             <tr>
+            <th></th>
                 <th>Fecha</th>
                 <th>Hora</th>
                 <th>Estatus</th>
-                <th>Accion</th>
+               
             </tr>
         </thead>
         <tbody>
         {% for horario in horarios %}
-            <tr>
-                <td><a href="{{ path('horario_show', { 'id': horario.idhorario }) }}">{{ horario.idhorario }}</a></td>
+            <tr  class= "info">
+                <td><a href="{{ path('horario_show', { 'id': horario.idhorario }) }}"></a></td>
                 <td>{% if horario.dia %}{{ horario.dia|date('Y-m-d') }}{% endif %}</td>
                 <td>{% if horario.hora %}{{ horario.hora|date('H:i:s') }}{% endif %}</td>
                   <td>{{ horario.idesta.descComp}}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('horario_show', { 'id': horario.idhorario }) }}">Ver</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('horario_edit', { 'id': horario.idhorario }) }}">Editar</a>
-                        </li>
-                    </ul>
+                         <label class="checkbox-inline">
+                            <a href="{{ path('horario_show', { 'id': horario.idhorario }) }}">
+                       <label><button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
+                       
+                         <label class="checkbox-inline">
+                            <a href="{{ path('horario_edit', { 'id': horario.idhorario }) }}">
+                            <label><button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
+                        
+                         <label class="checkbox-inline">
+                          <a href="{{ path('horario_delete', { 'id': horario.idhorario }) }}" onclick="return confirm('&#191;Desea eliminar este elemento?')">
+                         <label></label> <button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
+               </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('horario_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

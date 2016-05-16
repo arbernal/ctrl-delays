@@ -31,7 +31,7 @@ class RetardosType extends AbstractType
             				->where('e.descComp =  \'ACTIVO\'');
             				}, 'label' => 'Usuario',
             				) )
-            ->add( 'horaLlega', null,array('label' => 'Hora de Llegada'))
+            
             
             ->add('idhorario',  EntityType::class, array(
             				'class' => 'TekneiCtrlBundle:Horario',

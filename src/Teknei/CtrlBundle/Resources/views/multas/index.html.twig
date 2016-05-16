@@ -1,45 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Multas list</h1>
-
-    <table>
+    <h1 class="text-info"> Multas</h1>
+      <ul class="nav nav-pills">
+      <li class="active"> <a href="{{ path('multas_new') }}" href="#" class="btn btn-primary btn-xs">Nuevo</a></li>
+    </ul>
+        
+  <table class="table table-striped">
         <thead>
             <tr>
+            <th></th>
                 <th>Usuario</th>
                 <th>Horario</th>
                 <th>Hora de Llegada</th>
                 <th>Subtotal</th>
                 <th>Estado de pago</th>
                 <th>Estatus</th>
-                <th>Acci&#243n</th>
-            </tr>
+              </tr>
         </thead>
         <tbody>
         {% for multa in multas %}
-            <tr>
-                <td><a href="{{ path('multas_show', { 'id': multa.idmultas }) }}">{{ multa.idmultas }}</a></td>
+            <tr class= "info">
+                <td><a href="{{ path('multas_show', { 'id': multa.idmultas }) }}"></a></td>
                 <td>{% if multa.tiemTran %}{{ multa.tiemTran|date('H:i:s') }}{% endif %}</td>
                 <td>{{ multa.subtotal }}</td>
                 <td>{{ multa.total }}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('multas_show', { 'id': multa.idmultas }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('multas_edit', { 'id': multa.idmultas }) }}">edit</a>
-                        </li>
-                    </ul>
+                        <label class="checkbox-inline">
+                            <a href="{{ path('multas_show', { 'id': multa.idmultas }) }}">
+                      <label><button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
+                      
+                       <label class="checkbox-inline">
+                            <a href="{{ path('multas_edit', { 'id': multa.idmultas }) }}">
+                            <label><button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
+                       
+                       
+                        <label class="checkbox-inline">
+                    <a href="{{ path('multas_delete', { 'id': multa.idmultas }) }}" onclick="return confirm('&#191;Desea eliminar este elemento?')">
+                         <label></label> <button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
+               </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('multas_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}

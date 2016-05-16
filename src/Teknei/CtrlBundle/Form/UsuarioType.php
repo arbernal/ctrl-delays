@@ -10,6 +10,7 @@ use Symfony\Component\Form\FormEvent;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
 
+
 class UsuarioType extends AbstractType
 {
     /**
@@ -19,6 +20,7 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            
             ->add('usuario', null,array('label' => 'Nombre'))
             ->add('contrasena', null,array('label' => 'Password'))
             ->add( 'idroles', EntityType::class, array(

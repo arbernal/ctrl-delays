@@ -1,14 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Usuario</h1>
-
-    <table>
+    <h1 class="text-info"> Usuario</h1>
+        <table class="table table-striped">
         <tbody>
-            <tr>
-                <th>Idusuario</th>
-                <td>{{ usuario.idusuario }}</td>
-            </tr>
+           
             <tr>
                 <th>Usuario</th>
                 <td>{{ usuario.usuario }}</td>
@@ -21,9 +17,13 @@
     </table>
 
     <ul>
-        <li>
-            <a href="{{ path('usuario_index') }}">Aceptar</a>
-        </li>
+         <label class="checkbox-inline">
+            <a href="{{ path('usuario_index') }}">
+       <label><button type="button" class="btn btn-primary btn-xs">Regresar</button></a></label>
+        
+      
+                  
+                   
         
     </ul>
 {% endblock %}

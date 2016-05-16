@@ -1,46 +1,47 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-   <h1 class="text-info"> USUARIO</h1>
+   <h1 class="text-info"> Usuario</h1>
       <ul class="nav nav-pills">
-    <table = "table table-bordered">
+      <li class="active"> <a href="{{ path('usuario_new') }}" href="#" class="btn btn-primary btn-xs">Nuevo</a></li>
+    </ul>
+        
+  <table class="table table-striped">
         <thead>
             <tr>
-                <th>Nombre</th>
-                  <th>Rol</th>
-                  <th>Estatus</th>
-                <th>Acci&#243;n</th>
+            <th></th>
+               <th>Nombre</th>
+               <th>Rol</th>
+               <th>Estatus</th>
+              
             </tr>
         </thead>
         <tbody>
         {% for usuario in usuarios %}
-            <tr>
-                <td><a href="{{ path('usuario_show', { 'id': usuario.idusuario }) }}">{{ usuario.idusuario }}</a></td>
-                <td>{{ usuario.usuario }}</td>
-                <td>{{ usuario.idesta.descComp}}</td> 
+            <tr class= "info">
+                <td><a href="{{ path('usuario_show', { 'id': usuario.idusuario }) }}"></a></td>
+                <td>{{ usuario.usuario }}</td> 
                 <td>{{ usuario.idroles.nombre }}</td>
+                <td>{{ usuario.idesta.descComp}}</td> 
                
-                <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('usuario_show', { 'id': usuario.idusuario }) }}">Ver</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('usuario_edit', { 'id': usuario.idusuario }) }}">Editar</a>
-                        </li>
-           <li>
-				 <a href="{{ path('usuario_delete', { 'id': usuario.idusuario }) }}" onclick="return confirm('&#191;Desea eliminar este elemento?')">Eliminar</a>
-        </li> 
-        </ul>
-                </td>
+             <td>
+                <ul>
+                   <label class="checkbox-inline">
+                   <a href="{{ path('usuario_show', { 'id': usuario.idusuario }) }}">
+                   <label><button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
+                        
+                      <label class="checkbox-inline">
+                      <a href="{{ path('usuario_edit', { 'id': usuario.idusuario }) }}">
+                      <label></label> <button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
+                       
+                         <label class="checkbox-inline">
+				         <a href="{{ path('usuario_delete', { 'id': usuario.idusuario }) }}" onclick="return confirm('&#191;Desea eliminar este elemento?')">
+                         <label></label> <button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
+               </ul>
+             </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('usuario_new') }}">Nuevo</a>
-        </li>
-    </ul>
-{% endblock %}
+   {% endblock %}

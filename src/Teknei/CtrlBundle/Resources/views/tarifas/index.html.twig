@@ -1,33 +1,40 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tarifas list</h1>
-
-    <table>
+   <h1 class="text-info"> Tarifas</h1>
+      <ul class="nav nav-pills">
+      <li class="active"> <a href="{{ path('tarifas_new') }}" href="#" class="btn btn-primary btn-xs">Nuevo</a></li>
+    </ul>
+        
+  <table class="table table-striped">
         <thead>
             <tr>
-                
+                <th></th>
                 <th>Tarifa</th>
                 <th>Tipo de Tarifa</th>
                 <th>Estatus</th>
-                <th>Actions</th>
-            </tr>
+                </tr>
         </thead>
         <tbody>
         {% for tarifa in tarifas %}
-            <tr>
-                <td><a href="{{ path('tarifas_show', { 'id': tarifa.idtari }) }}">{{ tarifa.idtari }}</a></td>
+            <tr   <tr class= "info">
+                <td><a href="{{ path('tarifas_show', { 'id': tarifa.idtari }) }}"></a></td>
                 <td>{{ tarifa.tarifa }}</td>  
                  <td>{{ tarifa.idtipotari.descComp}}</td>
                  <td>{{ tarifa.idesta.descComp}}</td>  
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('tarifas_show', { 'id': tarifa.idtari }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('tarifas_edit', { 'id': tarifa.idtari }) }}">edit</a>
-                        </li>
+                       <label class="checkbox-inline">
+                            <a href="{{ path('tarifas_show', { 'id': tarifa.idtari }) }}">
+                         <label><button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
+                       
+                        <label class="checkbox-inline">
+                            <a href="{{ path('tarifas_edit', { 'id': tarifa.idtari }) }}">
+                            <label><button type="button" class="btn btn-primary btn-xs">Editarr</button></a></label>
+                       
+                        <label class="checkbox-inline">
+				 <a href="{{ path('tarifas_delete', { 'id': tarifa.idtari }) }}" onclick="return confirm('&#191;Desea eliminar este elemento?')">
+        <label><button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
                     </ul>
                 </td>
             </tr>
@@ -35,9 +42,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('tarifas_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    
 {% endblock %}

@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cata edit</h1>
+    <h1>Editar Catalogo</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
        <input type="submit" value="Guardar" />
+       
     {{ form_end(edit_form) }}
 
     <ul>

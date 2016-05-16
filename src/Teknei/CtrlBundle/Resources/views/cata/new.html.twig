@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Cata creation</h1>
+    <h1>Nuevo Cata</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <input type="submit" value="Guardar" />
+        
+  
+<!-- input type="text" value="Guardar" style="text-transform:uppercase;" onkeyup="javascript:this.value=this.value.toUpperCase();">--> 
+
+   
+   
     {{ form_end(form) }}
 
-    <ul>
-        <li>
-            <a href="{{ path('cata_index') }}">Cancelar</a>
-        </li>
+    <ul> 
+       <a href="{{ path('cata_index') }}">Cancelar</a>    
     </ul>
 {% endblock %}

@@ -19,8 +19,8 @@ class CataType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('descCort', null,array('label' => 'Descripción corta'))
-            ->add('descComp', null,array('label' => 'Descripción completa'))
+            ->add('descCort', null,array ('label' => 'Descripcion corta'))
+            ->add('descComp', null,array ('label' => 'Descripcion completa'))
             
         ;
             $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {

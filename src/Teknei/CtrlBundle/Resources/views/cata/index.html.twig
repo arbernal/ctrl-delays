@@ -1,48 +1,46 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-  <h1 class="text-info"> CATA</h1>
+<h1 class="text-info"> Cata</h1>
       <ul class="nav nav-pills">
-      
-      <table = "table table-bordered">
+      <li class="active"> <a href="{{ path('cata_new') }}" href="#" class="btn btn-primary btn-xs">Nuevo</a></li>
+    </ul>
+        
+  <table class="table table-striped">
         <thead>
             <tr>
-                <th>Descripcion corta</th>
-                <th>Descripcion completa</th>
+            <th></th>
+                <th>Descripci&#243n corta</th>
+                <th>Descripci&#243n completa</th>
                 <th>Estatus</th>
-                <th>Accion</th>
+                
             </tr>
         </thead>
         <tbody>
         {% for catum in catas %}
-            <tr>
-                <td><a href="{{ path('cata_show', { 'id': catum.idcata }) }}">{{ catum.idcata }}</a></td>
+              <tr class= "info">
+                <td><a href="{{ path('cata_show', { 'id': catum.idcata }) }}"></a></td>
                 <td>{{ catum.descCort }}</td>
                 <td>{{ catum.descComp }}</td>
                <td>{{ catum.idesta.descComp }}</td>
                     
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('cata_show', { 'id': catum.idcata }) }}">Ver</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">Editar</a>
-                        </li>
-                        <li>
-				 <a href="{{ path('cata_delete', { 'id': catum.idcata }) }}" onclick="return confirm('¿Desea eliminar este elemento?')">Eliminar</a>
-        </li> 
+                        <label class="checkbox-inline">
+                            <a href="{{ path('cata_show', { 'id': catum.idcata }) }}">
+                               <label><button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
+                       
+                         <label class="checkbox-inline">
+                            <a href="{{ path('cata_edit', { 'id': catum.idcata }) }}">
+                              <label></label> <button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
+                         
+                         <label class="checkbox-inline">
+				           <a href="{{ path('cata_delete', { 'id': catum.idcata }) }}" onclick="return confirm('&#243;Desea eliminar este elemento?')"
+                               <label></label> <button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
                     </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('cata_new') }}">Nuevo</a>
-        </li>
-    </ul>
 {% endblock %}

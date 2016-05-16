@@ -1,22 +1,26 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Juntas</h1>
-
-    <table>
+   <h1 class="text-info"> Juntas</h1>
+      <ul class="nav nav-pills">
+      <li class="active"> <a href="{{ path('usuario_new') }}" href="#" class="btn btn-primary btn-xs">Nuevo</a></li>
+    </ul>
+        
+  <table class="table table-striped">
         <thead>
             <tr>
+            <th></th>
                 <th>Hora de Llegada</th>
                  <th>Usuario</th>
                   <th>Horario</th>
                    <th>Multas</th>
-                <th>Acción</th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
         {% for retardo in retardos %}
-            <tr>
-                <td><a href="{{ path('retardos_show', { 'id': retardo.idretardos }) }}">{{ retardo.idretardos }}</a></td>
+             <tr class= "info">
+                <td><a href="{{ path('retardos_show', { 'id': retardo.idretardos }) }}"></a></td>
                 <td>{% if retardo.horaLlega %}{{ retardo.horaLlega|date('H:i:s') }}{% endif %}</td>
                 <td>{{retardo.idusuario.usuario }}</td>
                 <td>{{retardo.idhorario.dia }}</td>
@@ -24,13 +28,16 @@
                 <td>{{retardo.idtari.tarifa }}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('retardos_show', { 'id': retardo.idretardos }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('retardos_edit', { 'id': retardo.idretardos }) }}">edit</a>
-                        </li>
-                     <a href="{{ path('retardos_delete', { 'id': retardo.idretardos }) }}" onclick="return confirm('¿Desea eliminar este elemento?')">Eliminar</a>
+                        <label class="checkbox-inline">
+                            <a href="{{ path('retardos_show', { 'id': retardo.idretardos }) }}">
+                      <label><button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
+                       <label class="checkbox-inline">
+                            <a href="{{ path('retardos_edit', { 'id': retardo.idretardos }) }}">
+                            <label><button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
+                       
+                        <label class="checkbox-inline">
+                     <a href="{{ path('retardos_delete', { 'id': retardo.idretardos }) }}" onclick="return confirm('¿Desea eliminar este elemento?')">
+                     <label><button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
                     </ul>
                 </td>
             </tr>
@@ -38,9 +45,5 @@
         </tbody>
     </table>
 
-    <ul>
-        <li>
-            <a href="{{ path('retardos_new') }}">Create a new entry</a>
-        </li>
-    </ul>
+    
 {% endblock %}

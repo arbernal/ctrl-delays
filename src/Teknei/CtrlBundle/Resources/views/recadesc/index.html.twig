@@ -1,39 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>RecaDesc list</h1>
-
-    <table>
+    <h1 class="text-info"> Recargos y Descuentos</h1>
+      <ul class="nav nav-pills">
+      <li class="active"> <a href="{{ path('recadesc_new') }}" href="#" class="btn btn-primary btn-xs">Nuevo</a></li>
+    </ul>
+        
+  <table class="table table-striped">
         <thead>
             <tr>
-                <th>Idrecadesc</th>
-                <th>Porce</th>
-                <th>Actions</th>
+                <th></th>
+                <th>Operador</th>
+                <th>$</th>
+                <th>Tipo</th>
+                <th>Estatus</th>
+                
             </tr>
         </thead>
         <tbody>
         {% for recaDesc in recaDescs %}
-            <tr>
-                <td><a href="{{ path('recadesc_show', { 'id': recaDesc.idrecaDesc }) }}">{{ recaDesc.idrecaDesc }}</a></td>
+             <tr class= "info">
+                <td><a href="{{ path('recadesc_show', { 'id': recaDesc.idrecaDesc }) }}"></a></td>
                 <td>{{ recaDesc.porce }}</td>
                 <td>
                     <ul>
-                        <li>
-                            <a href="{{ path('recadesc_show', { 'id': recaDesc.idrecaDesc }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('recadesc_edit', { 'id': recaDesc.idrecaDesc }) }}">edit</a>
-                        </li>
-                    </ul>
+                          <label class="checkbox-inline">
+                            <a href="{{ path('recadesc_show', { 'id': recaDesc.idrecaDesc }) }}">V
+                        <label><button type="button" class="btn btn-primary btn-xs">Ver</button></a></label>
+                         <label class="checkbox-inline">
+                            <a href="{{ path('recadesc_edit', { 'id': recaDesc.idrecaDesc }) }}">
+                            <label><button type="button" class="btn btn-primary btn-xs">Editar</button></a></label>
+                         
+                         <label class="checkbox-inline">
+                    <a href="{{ path('usuario_delete', { 'id': recadesc.idrecaDesc }) }}" onclick="return confirm('&#191;Desea eliminar este elemento?')">
+                         <label></label> <button type="button" class="btn btn-primary btn-xs">Eliminar</button></a></label>
+               </ul>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-    <ul>
-        <li>
-            <a href="{{ path('recadesc_new') }}">Create a new entry</a>
-        </li>
-    </ul>
 {% endblock %}
