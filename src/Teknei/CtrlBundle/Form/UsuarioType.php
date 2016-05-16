@@ -53,7 +53,7 @@ class UsuarioType extends AbstractType
             				'query_builder' => function (EntityRepository $er) {
             				return $er->createQueryBuilder('u')
             				->where('u.descCort = \'ES_CA\' ');
-            				}, 'label' => 'ESTATUS',
+            				}, 'label' => 'Estatus',
             		));
             	}
             });
