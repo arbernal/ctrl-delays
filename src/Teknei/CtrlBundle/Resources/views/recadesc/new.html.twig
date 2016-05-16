@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>RecaDesc creation</h1>
+    <h1>Nuevo Recargo y Descuento</h1>
 
     {{ form_start(form) }}
         {{ form_widget(form) }}
-        <input type="submit" value="Create" />
+        <input type="submit" value="Crear" />
     {{ form_end(form) }}
 
     <ul>
         <li>
-            <a href="{{ path('recadesc_index') }}">Back to the list</a>
+            <a href="{{ path('recadesc_index') }}">Regresar</a>
         </li>
     </ul>
 {% endblock %}

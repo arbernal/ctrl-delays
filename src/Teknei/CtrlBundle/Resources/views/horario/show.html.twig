@@ -6,7 +6,7 @@
     <table>
         <tbody>
             <tr>
-                <th>Idhorario</th>
+                <th>Horario</th>
                 <td>{{ horario.idhorario }}</td>
             </tr>
             <tr>
@@ -22,14 +22,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('horario_index') }}">Back to the list</a>
+            <a href="{{ path('horario_index') }}">Regresar</a>
         </li>
         <li>
-            <a href="{{ path('horario_edit', { 'id': horario.idhorario }) }}">Edit</a>
+            <a href="{{ path('horario_edit', { 'id': horario.idhorario }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Borrar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

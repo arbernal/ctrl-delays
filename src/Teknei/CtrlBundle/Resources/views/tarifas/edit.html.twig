@@ -1,20 +1,20 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Tarifas edit</h1>
+    <h1>Editar Tarifas</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
+        <input type="submit" value="Editar" />
     {{ form_end(edit_form) }}
 
     <ul>
         <li>
-            <a href="{{ path('tarifas_index') }}">Back to the list</a>
+            <a href="{{ path('tarifas_index') }}">Regresar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Borrar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

@@ -1,16 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>RecaDesc</h1>
+    <h1>Recargos y Descuentos</h1>
 
     <table>
         <tbody>
             <tr>
-                <th>Idrecadesc</th>
+                <th>Recargos y Descuentos</th>
                 <td>{{ recaDesc.idrecaDesc }}</td>
             </tr>
             <tr>
-                <th>Porce</th>
+                <th>Porcentaje</th>
                 <td>{{ recaDesc.porce }}</td>
             </tr>
         </tbody>
@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('recadesc_index') }}">Back to the list</a>
+            <a href="{{ path('recadesc_index') }}">Regresar</a>
         </li>
         <li>
-            <a href="{{ path('recadesc_edit', { 'id': recaDesc.idrecaDesc }) }}">Edit</a>
+            <a href="{{ path('recadesc_edit', { 'id': recaDesc.idrecaDesc }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Borrar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

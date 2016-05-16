@@ -3,10 +3,10 @@
 {% block body %}
     <h1>Roles</h1>
 
-    <table>
+    <table = "table table-bordered">
         <tbody>
             <tr>
-                <th>Idroles</th>
+                <th>Roles</th>
                 <td>{{ role.idroles }}</td>
             </tr>
             <tr>
@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('roles_index') }}">Back to the list</a>
+            <a href="{{ path('roles_index') }}">Regresar</a>
         </li>
         <li>
-            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">Edit</a>
+            <a href="{{ path('roles_edit', { 'id': role.idroles }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Borrar">
             {{ form_end(delete_form) }}
         </li>
     </ul>

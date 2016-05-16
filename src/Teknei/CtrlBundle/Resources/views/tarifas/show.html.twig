@@ -6,11 +6,11 @@
     <table>
         <tbody>
             <tr>
-                <th>Idtari</th>
+                <th>Tarifa</th>
                 <td>{{ tarifa.idtari }}</td>
             </tr>
             <tr>
-                <th>Tarifa</th>
+                <th>Tipo</th>
                 <td>{{ tarifa.tarifa }}</td>
             </tr>
         </tbody>
@@ -18,14 +18,14 @@
 
     <ul>
         <li>
-            <a href="{{ path('tarifas_index') }}">Back to the list</a>
+            <a href="{{ path('tarifas_index') }}">Regresar</a>
         </li>
         <li>
-            <a href="{{ path('tarifas_edit', { 'id': tarifa.idtari }) }}">Edit</a>
+            <a href="{{ path('tarifas_edit', { 'id': tarifa.idtari }) }}">Editar</a>
         </li>
         <li>
             {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
+                <input type="submit" value="Borrar">
             {{ form_end(delete_form) }}
         </li>
     </ul>
