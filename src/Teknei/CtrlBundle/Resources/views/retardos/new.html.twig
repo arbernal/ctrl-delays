@@ -3,11 +3,14 @@
 {% block body %}
     <h1>Nueva Junta</h1>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
+<div>{{ form_label(form.idusuario) }} {{ form_widget(form.idusuario) }}
+	{{ form_widget(form.agregar) }}</div>
+<div>{{ form_label(form.idhorario) }} {{ form_widget(form.idhorario) }}
+</div>
+<div>{{ form_label(form.idtari) }} {{ form_widget(form.idtari) }}</div>
+<div>{{ form_label(form.idesta) }} {{ form_widget(form.idesta) }}</div>
+<input type="submit" value="Create" />
+{{ form_end(form) }}
     <ul>
         <li>
             <a href="{{ path('retardos_index') }}">Back to the list</a>

@@ -9,6 +9,7 @@ use Symfony\Component\Form\FormEvents;
 use Symfony\Component\Form\FormEvent;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\Extension\Core\Type\ButtonType;
 
 class RetardosType extends AbstractType
 {
@@ -44,8 +45,9 @@ class RetardosType extends AbstractType
             				return $horario->getDia()->format('d-m-Y').' '
             					   .$horario->getHora()->format('H:i:s');
             				}
-            				
-            				
+            				))
+            			->	add('agregar', ButtonType::class, array(
+            						'attr' => array('class' => 'agregar'),
             				))
             				
             ->add('idtari', EntityType::class, array(
