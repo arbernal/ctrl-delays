@@ -1,36 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <body>
 
-
-<div class="btn-group">
-  <button type="button" class="btn btn-primary">Inicio</button>
- 
-  <button type="button" class="btn btn-primary">Catalogos</button>
- 
-  <button type="button" class="btn btn-primary dropdown-toggle"
-          data-toggle="dropdown">
-    <span class="caret"></span>
-    <span class="sr-only">Desplegar menú</span>
-  </button>
- 
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="cata_index">Cata</a></li> 
-    <li><a href="roles_index">Roles</a></li>
-    <li><a href="horarios_index">Horarios</a></li>
-    <li><a href="tarifas_index">Tarifas</a></li>
-    <li><a href="recdesc_index">Recargas y descuentos</a></li>
+<div class="container">
+  <br>
+  <h3></h3>
+  <ul class="nav nav-pills nav-justified">
+    <li class="active"><a href="#">Inicio</a></li>
+     <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#">Catalogos 
+      <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+        <li><a href="../cata">Cata</a></li>
+        <li><a href="../roles">Roles</a></li>
+        <li><a href="../tarifas">Tarifa</a></li>   
+         <li><a href="../horario">Horarios</a></li>
+          <li><a href="../recadesc">Recargos y Descuentos</a></li>                     
+      </ul>
+    <li><a href="../usuario">Usuarios</a></li>
+    <li><a href="../retardos">Juntas</a></li>
+    <li><a href="../multa">Multas</a></li>
+    <li><a href="#">Cerrar Sesion</a></li>
   </ul>
-  <button type="button" class="btn btn-primary">Usuarios</button>
-   <button type="button" class="btn btn-primary">Juntas</button>
-    <button type="button" class="btn btn-primary">Multas</button>
-     <button type="button" class="btn btn-primary">Cerrar Sesion</button>
 </div>
-</div>
-
-{% block body %} 
-{% endblock %}
-
 
 </body>
 </html>

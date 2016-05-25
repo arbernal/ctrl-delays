@@ -92,7 +92,7 @@ class HorarioController extends Controller
             $em->persist($horario);
             $em->flush();
 
-            return $this->redirectToRoute('horario_edit', array('id' => $horario->getIdhorario()));
+            return $this->redirectToRoute('horario_index', array('id' => $horario->getIdhorario()));
         }
 
         return $this->render('TekneiCtrlBundle:horario:edit.html.twig', array(
@@ -100,27 +100,26 @@ class HorarioController extends Controller
             'edit_form' => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
-    }
+      }
 
     /**
-     * Deletes a Horario entity.
+     * Deletes a Usuario entity.
      *
-     * @Route("/{id}", name="horario_delete")
-     * @Method("DELETE")
+     * @Route("/{id}/delete", name="horario_delete")
+     *  @Method({"GET", "POST"})
      */
     public function deleteAction(Request $request, Horario $horario)
     {
-        $form = $this->createDeleteForm($horario);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($horario);
+    		$em = $this->getDoctrine()->getManager();
+    		$cata = $em->getRepository('TekneiCtrlBundle:cata')->find(2);
+    		$horario->setIdesta($cata);
+            $em->merge($horario);
             $em->flush();
-        }
+        
 
         return $this->redirectToRoute('horario_index');
     }
+        
 
     /**
      * Creates a form to delete a Horario entity.

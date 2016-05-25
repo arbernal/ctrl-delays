@@ -20,8 +20,8 @@ class UsuarioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            
-            ->add('usuario', null,array('label' => 'Nombre'))
+        
+            ->add('usuario', null,array('label' => 'Nombre','attr' => array('style' => 'text-transform:uppercase','onkeyup' => 'javascript:this.value=this.value.toUpperCase()') ))
             ->add('contrasena', null,array('label' => 'Password'))
             ->add( 'idroles', EntityType::class, array(
             				'class' => 'TekneiCtrlBundle:Roles',

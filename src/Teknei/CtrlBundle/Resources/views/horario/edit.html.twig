@@ -1,21 +1,18 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Editar Horario</h1>
+
+     <h1 class="text-info"> Editar Horario</h1>
 
     {{ form_start(edit_form) }}
         {{ form_widget(edit_form) }}
-        <input type="submit" value="Editar" />
+        <input type="submit" value="Guardar" />
     {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('horario_index') }}">Regresar</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Borrar">
-            {{ form_end(delete_form) }}
-        </li>
+ <ul>
+        <label class="checkbox-inline">
+            <a href="{{ path('horario_index') }}">
+       <label><button type="button" class="btn btn-primary btn-xs">Regresar</button></a></label>
+        
     </ul>
+   
 {% endblock %}

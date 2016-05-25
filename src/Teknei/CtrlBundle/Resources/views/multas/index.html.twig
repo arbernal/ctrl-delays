@@ -22,8 +22,11 @@
             <tr class= "info">
                 <td><a href="{{ path('multas_show', { 'id': multa.idmultas }) }}"></a></td>
                 <td>{% if multa.tiemTran %}{{ multa.tiemTran|date('H:i:s') }}{% endif %}</td>
+                <td>{{ multa.idusuario.usuario }}</td>
+                 <td>{{multa.idhorario.dia }}</td>
                 <td>{{ multa.subtotal }}</td>
                 <td>{{ multa.total }}</td>
+                <td>{{ multa.idesta.descComp }}</td>
                 <td>
                     <ul>
                         <label class="checkbox-inline">
